@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-withdraw',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './withdraw.component.html',
-  styleUrls: ['./withdraw.component.css'],
+  styleUrls: ['./withdraw.component.css']
 })
 export class WithdrawComponent {
   withdrawData = {

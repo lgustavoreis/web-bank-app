@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-deposit',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './deposit.component.html',
-  styleUrls: ['./deposit.component.css'],
+  styleUrls: ['./deposit.component.css']
 })
 export class DepositComponent {
   depositData = {

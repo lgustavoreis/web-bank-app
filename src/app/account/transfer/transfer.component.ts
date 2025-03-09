@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-transfer',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.css'],
+  styleUrls: ['./transfer.component.css']
 })
 export class TransferComponent {
   transferData = {

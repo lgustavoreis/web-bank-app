@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   email: string = '';
@@ -23,6 +18,7 @@ export class LoginComponent {
     this.apiService.login(credentials).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('email', this.email); // Armazenar o email no localStorage
         this.router.navigate(['/dashboard']);
       },
       (error) => {

@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   accountInfo: any;
@@ -16,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
-    const email = localStorage.getItem('email'); // Supondo que o email está armazenado no localStorage
+    const email = localStorage.getItem('email');
     if (email) {
       this.apiService.getAccountInfo(email).subscribe(
         (response: any) => {
@@ -34,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('email'); // Limpar o email ao fazer logout
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
 }
