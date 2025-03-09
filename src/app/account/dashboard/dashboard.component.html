@@ -1,25 +1,55 @@
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Welcome, {{ accountInfo?.firstName }}!</h2>
-        <div class="card">
-          <div class="card-header">
-            <h4>Account Information</h4>
-          </div>
-          <div class="card-body">
-            <p><strong>Name:</strong> {{ accountInfo?.firstName }} {{ accountInfo?.lastName }}</p>
-            <p><strong>Email:</strong> {{ accountInfo?.email }}</p>
-            <p><strong>Phone:</strong> {{ accountInfo?.mobilePhone }}</p>
-          </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <!-- Header Section -->
+      <div class="text-center mb-5">
+        <h2 class="display-5 font-weight-bold text-primary">Welcome, {{ accountInfo?.firstName }}!</h2>
+        <p class="lead text-muted">Manage your account and transactions with ease.</p>
+      </div>
+
+      <!-- Account Information Card -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0">Account Information</h4>
         </div>
-        <div class="mt-4">
-          <a routerLink="/balance" class="btn btn-info mr-2">View Balance</a>
-          <a routerLink="/transfer" class="btn btn-warning mr-2">Transfer Funds</a>
-          <a routerLink="/deposit" class="btn btn-success mr-2">Deposit Funds</a>
-          <a routerLink="/withdraw" class="btn btn-danger mr-2">Withdraw Funds</a>
-          <a routerLink="/history" class="btn btn-secondary">Transaction History</a>
-          <button class="btn btn-dark ml-2" (click)="logout()">Logout</button>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Name:</strong> {{ accountInfo?.firstName }} {{ accountInfo?.lastName }}
+            </li>
+            <li class="list-group-item">
+              <strong>Email:</strong> {{ accountInfo?.email }}
+            </li>
+            <li class="list-group-item">
+              <strong>Phone:</strong> {{ accountInfo?.mobilePhone }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="text-center">
+        <div class="d-grid gap-2 d-md-block">
+          <a routerLink="/balance" class="btn btn-outline-info btn-lg mr-2 mb-2">
+            <i class="fas fa-wallet mr-2"></i>View Balance
+          </a>
+          <a routerLink="/transfer" class="btn btn-outline-warning btn-lg mr-2 mb-2">
+            <i class="fas fa-exchange-alt mr-2"></i>Transfer Funds
+          </a>
+          <a routerLink="/deposit" class="btn btn-outline-success btn-lg mr-2 mb-2">
+            <i class="fas fa-coins mr-2"></i>Deposit Funds
+          </a>
+          <a routerLink="/withdraw" class="btn btn-outline-danger btn-lg mr-2 mb-2">
+            <i class="fas fa-hand-holding-usd mr-2"></i>Withdraw Funds
+          </a>
+          <a routerLink="/history" class="btn btn-outline-secondary btn-lg mr-2 mb-2">
+            <i class="fas fa-history mr-2"></i>Transaction History
+          </a>
+          <button class="btn btn-outline-dark btn-lg mb-2" (click)="logout()">
+            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
