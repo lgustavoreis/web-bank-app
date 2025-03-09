@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Withdraw Funds</h2>
+        <div class="card">
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" id="amount" [(ngModel)]="withdrawData.amount" name="amount" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Withdraw</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a routerLink="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>

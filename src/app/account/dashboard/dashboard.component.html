@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome, {{ accountInfo?.firstName }}!</h2>
+        <div class="card">
+          <div class="card-header">
+            <h4>Account Information</h4>
+          </div>
+          <div class="card-body">
+            <p><strong>Name:</strong> {{ accountInfo?.firstName }} {{ accountInfo?.lastName }}</p>
+            <p><strong>Email:</strong> {{ accountInfo?.email }}</p>
+            <p><strong>Phone:</strong> {{ accountInfo?.mobilePhone }}</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a routerLink="/balance" class="btn btn-info mr-2">View Balance</a>
+          <a routerLink="/transfer" class="btn btn-warning mr-2">Transfer Funds</a>
+          <a routerLink="/deposit" class="btn btn-success mr-2">Deposit Funds</a>
+          <a routerLink="/withdraw" class="btn btn-danger mr-2">Withdraw Funds</a>
+          <a routerLink="/history" class="btn btn-secondary">Transaction History</a>
+          <button class="btn btn-dark ml-2" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
