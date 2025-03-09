@@ -16,18 +16,25 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
-    this.apiService.getAccountInfo().subscribe(
-      (response) => {
-        this.accountInfo = response;
-      },
-      (error) => {
-        alert('Failed to load account info');
-      }
-    );
+    const email = localStorage.getItem('email'); // Supondo que o email está armazenado no localStorage
+    if (email) {
+      this.apiService.getAccountInfo(email).subscribe(
+        (response: any) => {
+          this.accountInfo = response;
+        },
+        (error) => {
+          alert('Failed to load account info');
+        }
+      );
+    } else {
+      alert('Email not found. Please log in again.');
+      this.router.navigate(['/login']);
+    }
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('email'); // Limpar o email ao fazer logout
     this.router.navigate(['/login']);
   }
 }

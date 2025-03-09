@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-withdraw',
@@ -16,13 +15,12 @@ export class WithdrawComponent {
     amount: 0,
   };
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService) {}
 
   onSubmit() {
-    this.apiService.withdraw(this.withdrawData.amount).subscribe(
-      (response) => {
+    this.apiService.withdrawFunds(this.withdrawData).subscribe(
+      (response: any) => {
         alert('Withdrawal successful!');
-        this.router.navigate(['/dashboard']);
       },
       (error) => {
         alert('Withdrawal failed: ' + error.message);

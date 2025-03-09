@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transfer',
@@ -18,13 +17,12 @@ export class TransferComponent {
     account: '',
   };
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService) {}
 
   onSubmit() {
-    this.apiService.transfer(this.transferData.amount, this.transferData.message, this.transferData.account).subscribe(
-      (response) => {
+    this.apiService.transferFunds(this.transferData).subscribe(
+      (response: any) => {
         alert('Transfer successful!');
-        this.router.navigate(['/dashboard']);
       },
       (error) => {
         alert('Transfer failed: ' + error.message);

@@ -19,7 +19,8 @@ export class LoginComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
   onSubmit() {
-    this.apiService.login(this.email, this.password).subscribe(
+    const credentials = { email: this.email, password: this.password };
+    this.apiService.login(credentials).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/dashboard']);

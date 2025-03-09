@@ -1,53 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const BASE_URL = 'https://starfish-app-g96va.ondigitalocean.app/v1';
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ApiService {
+  private baseUrl = 'https://starfish-app-g96va.ondigitalocean.app/v1';
+
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${BASE_URL}/accounts/auth`, { email, password });
+  createAccount(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/accounts/create`, userData);
   }
 
-  createAccount(user: any): Observable<any> {
-    return this.http.post(`${BASE_URL}/accounts/create`, user);
+  login(credentials: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/accounts/auth`, credentials);
   }
 
-  activateAccount(email: string, activationCode: string): Observable<any> {
-    return this.http.post(`${BASE_URL}/accounts/activate`, { email, activationCode });
+  getAccountInfo(email: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/accounts/info/${email}`);
   }
 
-  getAccountInfo(): Observable<any> {
-    return this.http.get(`${BASE_URL}/accounts/info`, { headers: this.getHeaders() });
+  transferFunds(transferData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/transactions/transfer`, transferData);
   }
 
-  getBalance(): Observable<any> {
-    return this.http.get(`${BASE_URL}/accounts/balance`, { headers: this.getHeaders() });
+  depositFunds(depositData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/transactions/deposit`, depositData);
   }
 
-  transfer(amount: number, message: string, account: string): Observable<any> {
-    return this.http.post(`${BASE_URL}/transactions/transfer`, { amount, message, account }, { headers: this.getHeaders() });
-  }
-
-  deposit(amount: number, message: string, email: string): Observable<any> {
-    return this.http.post(`${BASE_URL}/transactions/deposit`, { amount, message, email }, { headers: this.getHeaders() });
-  }
-
-  withdraw(amount: number): Observable<any> {
-    return this.http.post(`${BASE_URL}/transactions/withdraw`, { amount }, { headers: this.getHeaders() });
+  withdrawFunds(withdrawData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/transactions/withdraw`, withdrawData);
   }
 
   getTransactionHistory(days: number): Observable<any> {
-    return this.http.get(`${BASE_URL}/transactions/${days}/statement`, { headers: this.getHeaders() });
-  }
-
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    return new HttpHeaders({ 'x-access-token': token || '' });
+    return this.http.get(`${this.baseUrl}/transactions/${days}/statement`);
   }
 }

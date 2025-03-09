@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
@@ -25,12 +24,12 @@ export class SignupComponent {
 
   onSubmit() {
     this.apiService.createAccount(this.user).subscribe(
-      (response) => {
+      (response: any) => {
         alert('Account created successfully!');
         this.router.navigate(['/login']);
       },
       (error) => {
-        alert('Account creation failed: ' + error.message);
+        alert('Failed to create account: ' + error.message);
       }
     );
   }

@@ -15,9 +15,10 @@ export class HistoryComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.getTransactionHistory(30).subscribe(
+    const days = 30; // Exemplo: obter histórico dos últimos 30 dias
+    this.apiService.getTransactionHistory(days).subscribe(
       (response: any) => {
-        this.transactions = response;
+        this.transactions = response.transactions;
       },
       (error) => {
         alert('Failed to load transaction history');

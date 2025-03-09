@@ -11,17 +11,22 @@ import { CommonModule } from '@angular/common';
 })
 export class BalanceComponent implements OnInit {
   balance: number = 0;
+  lastUpdated: Date = new Date();
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.getBalance().subscribe(
-      (response: any) => {
-        this.balance = response.balance;
-      },
-      (error) => {
-        alert('Failed to load balance');
-      }
-    );
+    const email = localStorage.getItem('email'); // Supondo que o email está armazenado no localStorage
+    if (email) {
+      this.apiService.getAccountInfo(email).subscribe(
+        (response: any) => {
+          this.balance = response.balance;
+          this.lastUpdated = new Date();
+        },
+        (error) => {
+          alert('Failed to load balance');
+        }
+      );
+    }
   }
 }

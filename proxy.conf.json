@@ -1,0 +1,7 @@
+{
+    "/v1": {
+      "target": "https://starfish-app-g96va.ondigitalocean.app",
+      "secure": true,
+      "changeOrigin": true
+    }
+  }

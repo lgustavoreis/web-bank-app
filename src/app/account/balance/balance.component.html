@@ -1,21 +1,24 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
+      <!-- Título e descrição -->
       <div class="text-center mb-4">
         <h2 class="display-5 font-weight-bold text-primary">Account Balance</h2>
         <p class="text-muted">Check your current balance and manage your finances.</p>
       </div>
 
+      <!-- Card para exibir o saldo -->
       <div class="card shadow-sm">
         <div class="card-body text-center p-4">
           <h5 class="card-title text-secondary mb-3">Current Balance</h5>
           <p class="display-4 font-weight-bold text-success">
-            {{ balance | currency }}
+            {{ balance | currency }} <!-- Exibe o saldo formatado como moeda -->
           </p>
-          <p class="text-muted small">Last updated: {{ lastUpdated | date }}</p>
+          <p class="text-muted small">Last updated: {{ lastUpdated | date }}</p> <!-- Exibe a data/hora da última atualização -->
         </div>
       </div>
 
+      <!-- Botão para voltar ao dashboard -->
       <div class="text-center mt-4">
         <a routerLink="/dashboard" class="btn btn-outline-primary btn-lg">
           <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
